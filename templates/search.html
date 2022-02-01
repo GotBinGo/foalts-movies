@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .id {
+      width: 100px;
+    }
+    .category {
+      width: 200px;
+    }
+    .score {
+      width: 50px;
+    }
+    .name {
+      width: 500px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <form action="/search" method="get" id="form1">
+    <input placeholder="Movie title" value="{{title}}" name="title">
+    <button type="submit" form="form1" value="Submit">Search</button>
+  </form>
+  <br>
+  {% if title %}
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Score</th>
+        <th>Category</th>
+        <th>Name</th>
+      </tr>
+      {% for movie in movies %}
+      <tr>
+        <td class="id">
+          <a href="/wiki?id={{ movie.id }}">{{ movie.id }}</a>
+        </td>
+        <td class="score">
+          {{ movie.score }}
+        </td>
+        <td class="category">
+          {% for genre in movie.genres %}
+            {{ genre.name }}
+          {% endfor %}
+        </td>
+        <td class="name">
+          {{ movie.name }}
+        </td>
+
+      </tr>
+      {% else %}
+          No movies have been found.
+      {% endfor %}
+    </table>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .id {
+      width: 100px;
+    }
+    .category {
+      width: 200px;
+    }
+    .score {
+      width: 50px;
+    }
+    .name {
+      width: 300px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <form action="/wiki" method="get" id="form1">
+    <input placeholder="TMDB id" value="{{id}}" name="id">
+    <button type="submit" form="form1" value="Submit">Search</button>
+  </form>
+  <br>
+  
+  {% if notFound %}
+    No movie found with this id
+  {% endif %}
+  {{ title }}
+  <br>
+  {% if pageid %}
+    <br>
+    <a target="_blank" href="https://en.wikipedia.org/?curid={{ pageid }}">Wikipedia Link</a>
+    <br>
+    <a href="/related?id={{ id }}">Related Movies</a>
+  {% endif %}
+  <br>
+  <br>
+  {{ extract }}
+</body>
+</html>

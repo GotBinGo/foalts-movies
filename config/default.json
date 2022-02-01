@@ -2,6 +2,7 @@
   "port": "env(PORT)",
   "settings": {
     "loggerFormat": "tiny",
+    "templateEngine": "twig",
     "session": {
       "store": "@foal/typeorm"
     }
